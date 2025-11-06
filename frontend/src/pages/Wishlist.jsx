@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthContext';
 import './Wishlist.css';
 
 const Wishlist = () => {
-  const { wishlist, productWishlist, courseWishlist, loading, removeFromWishlist } = useWishlist();
+  const { wishlist = [], productWishlist = [], courseWishlist = [], loading, removeFromWishlist } = useWishlist();
   const { addToCart } = useCart();
   const { isAuthenticated } = useAuth();
   const [removingItems, setRemovingItems] = useState(new Set());
@@ -58,7 +58,7 @@ const Wishlist = () => {
     );
   }
 
-  if (loading && wishlist.length === 0) {
+  if (loading && (!wishlist || wishlist.length === 0)) {
     return (
       <div className="container py-5 text-center">
         <div className="loading-spinner mx-auto"></div>
@@ -71,11 +71,11 @@ const Wishlist = () => {
   const getCurrentWishlistItems = () => {
     switch (activeTab) {
       case 'products':
-        return productWishlist;
+        return productWishlist || [];
       case 'courses':
-        return courseWishlist;
+        return courseWishlist || [];
       default:
-        return wishlist;
+        return wishlist || [];
     }
   };
 
@@ -90,7 +90,7 @@ const Wishlist = () => {
           </Link>
           <h2 className="bakery-text-brown fw-bold mb-0">
             <FaHeart className="me-2 text-danger" />
-            My Wishlist ({wishlist.length})
+            My Wishlist ({wishlist ? wishlist.length : 0})
           </h2>
         </div>
       </div>
@@ -102,7 +102,7 @@ const Wishlist = () => {
             className={`nav-link ${activeTab === 'all' ? 'active' : ''}`}
             onClick={() => setActiveTab('all')}
           >
-            All ({wishlist.length})
+            All ({wishlist ? wishlist.length : 0})
           </button>
         </li>
         <li className="nav-item">
@@ -110,7 +110,7 @@ const Wishlist = () => {
             className={`nav-link ${activeTab === 'products' ? 'active' : ''}`}
             onClick={() => setActiveTab('products')}
           >
-            Products ({productWishlist.length})
+            Products ({productWishlist ? productWishlist.length : 0})
           </button>
         </li>
         <li className="nav-item">
@@ -118,7 +118,7 @@ const Wishlist = () => {
             className={`nav-link ${activeTab === 'courses' ? 'active' : ''}`}
             onClick={() => setActiveTab('courses')}
           >
-            Courses ({courseWishlist.length})
+            Courses ({courseWishlist ? courseWishlist.length : 0})
           </button>
         </li>
       </ul>
@@ -134,7 +134,7 @@ const Wishlist = () => {
         </div>
       ) : (
         <div className="row">
-          {currentWishlistItems.map((item) => (
+          {(currentWishlistItems || []).map((item) => (
             <div key={item.product._id} className="col-lg-4 col-md-6 mb-4">
               <div className="card h-100 shadow-sm wishlist-card">
                 <div className="position-relative">
