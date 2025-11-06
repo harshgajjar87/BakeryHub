@@ -1,0 +1,39 @@
+.product-detail-image {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.price-text {
+  color: var(--bakery-brown);
+  font-weight: bold;
+}
+
+.bakery-text-brown {
+  color: var(--bakery-brown);
+}
+
+.bakery-btn-primary {
+  background-color: var(--bakery-brown);
+  border-color: var(--bakery-brown);
+}
+
+.bakery-btn-primary:hover {
+  background-color: var(--bakery-brown-dark);
+  border-color: var(--bakery-brown-dark);
+}
+
+.loading-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 0.25em solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--bakery-brown);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

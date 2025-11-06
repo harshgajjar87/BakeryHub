@@ -1,0 +1,540 @@
+/* Custom styles for Bakery Platform */
+
+:root {
+  --bakery-brown: #8B4513;
+  --bakery-brown-light: #A0522D;
+  --bakery-brown-dark: #654321;
+  --bakery-cream: #FFF8DC;
+  --bakery-cream-light: #FFFACD;
+  --bakery-gold: #DAA520;
+  --bakery-gold-light: #FFD700;
+  --bakery-dark: #2C1810;
+  --bakery-dark-light: #3D2518;
+  --bakery-light: #F5F5DC;
+  --bakery-light-gray: #E8E8E8;
+  --bakery-accent: #CD853F;
+  --bakery-shadow: rgba(139, 69, 19, 0.15);
+  --bakery-shadow-hover: rgba(139, 69, 19, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--bakery-cream) 0%, var(--bakery-light) 50%, var(--bakery-cream-light) 100%);
+  color: var(--bakery-dark);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.bakery-bg {
+  background: linear-gradient(135deg, var(--bakery-cream) 0%, var(--bakery-light) 100%);
+  position: relative;
+}
+
+.bakery-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23DAA520" opacity="0.1"/><circle cx="80" cy="30" r="1.5" fill="%23CD853F" opacity="0.1"/><circle cx="50" cy="70" r="1" fill="%23FFD700" opacity="0.1"/></svg>');
+  pointer-events: none;
+}
+
+.bakery-text-brown {
+  color: var(--bakery-brown) !important;
+}
+
+.bakery-text-gold {
+  color: var(--bakery-gold) !important;
+}
+
+.bakery-text-accent {
+  color: var(--bakery-accent) !important;
+}
+
+.bakery-btn-primary {
+  background: linear-gradient(135deg, var(--bakery-brown) 0%, var(--bakery-brown-light) 100%);
+  border: 2px solid var(--bakery-brown);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.bakery-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.bakery-btn-primary:hover::before {
+  left: 100%;
+}
+
+.bakery-btn-primary:hover {
+  background: linear-gradient(135deg, var(--bakery-brown-dark) 0%, var(--bakery-brown) 100%);
+  border-color: var(--bakery-brown-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--bakery-shadow-hover);
+}
+
+.bakery-btn-outline {
+  border: 2px solid var(--bakery-brown);
+  color: var(--bakery-brown);
+  background: transparent;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.bakery-btn-outline:hover {
+  background: linear-gradient(135deg, var(--bakery-brown) 0%, var(--bakery-brown-light) 100%);
+  border-color: var(--bakery-brown);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--bakery-shadow-hover);
+}
+
+.card {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px var(--bakery-shadow);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: linear-gradient(145deg, white 0%, var(--bakery-light-gray) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--bakery-gold), var(--bakery-accent), var(--bakery-gold));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px var(--bakery-shadow-hover);
+}
+
+.product-card img,
+.course-card img {
+  height: 220px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover img,
+.course-card:hover img {
+  transform: scale(1.05);
+}
+
+.navbar {
+  background: linear-gradient(135deg, var(--bakery-dark) 0%, var(--bakery-dark-light) 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.navbar .nav-link {
+  color: white !important;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: var(--bakery-gold) !important;
+}
+
+.navbar .dropdown-menu {
+  background: var(--bakery-dark);
+  border: 1px solid var(--bakery-brown);
+}
+
+.navbar .dropdown-item {
+  color: white;
+}
+
+.navbar .dropdown-item:hover {
+  background: var(--bakery-brown);
+  color: white;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--bakery-gold) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+  color: var(--bakery-gold-light) !important;
+}
+
+.hero-section {
+  background: linear-gradient(rgba(139, 69, 19, 0.85), rgba(139, 69, 19, 0.85)),
+              url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23FFD700" opacity="0.1"/><circle cx="75" cy="75" r="0.8" fill="%23DAA520" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.hero-section h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-section p {
+  font-size: 1.3rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer {
+  background: linear-gradient(135deg, var(--bakery-dark) 0%, var(--bakery-dark-light) 100%);
+  color: white;
+  padding: 60px 0 30px;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--bakery-gold), var(--bakery-accent), var(--bakery-gold));
+}
+
+.footer a {
+  color: var(--bakery-light);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--bakery-gold);
+  transform: translateX(5px);
+}
+
+.form-control {
+  border: 2px solid var(--bakery-light-gray);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.form-control:focus {
+  border-color: var(--bakery-brown);
+  box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
+  background: white;
+  transform: scale(1.02);
+}
+
+.btn-close:focus {
+  box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
+}
+
+.badge {
+  font-size: 0.8em;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.price-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--bakery-brown);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.star-rating {
+  color: var(--bakery-gold);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(139, 69, 19, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--bakery-brown);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Enhanced Animations */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.card {
+  animation: bounceIn 0.6s ease-out;
+}
+
+.card:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.card:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+  .hero-section p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    padding: 100px 0;
+  }
+  .hero-section h1 {
+    font-size: 2.8rem;
+  }
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  .card {
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 80px 0;
+    background-attachment: scroll;
+  }
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
+  }
+  .bakery-btn-primary,
+  .bakery-btn-outline {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+  .card {
+    border-radius: 15px;
+  }
+  .product-card img,
+  .course-card img {
+    height: 180px;
+  }
+  .footer {
+    padding: 40px 0 20px;
+  }
+  .footer .row > div {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  .hero-section p {
+    font-size: 0.9rem;
+  }
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .card {
+    border-radius: 12px;
+  }
+  .product-card img,
+  .course-card img {
+    height: 150px;
+  }
+  .price-text {
+    font-size: 1.2rem;
+  }
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white !important;
+  }
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+  .bakery-btn-primary,
+  .bakery-btn-outline {
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+  }
+}
+
+/* Course Protection */
+.course-content {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.course-content img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* Prevent right-click on course content */
+.course-content {
+  position: relative;
+}
+
+.course-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+/* Admin Dashboard Card Fix */
+.card.bg-primary,
+.card.bg-success,
+.card.bg-info,
+.card.bg-warning,
+.card.bg-secondary {
+  color: white !important;
+}
+
+.card.bg-primary .card-title,
+.card.bg-success .card-title,
+.card.bg-info .card-title,
+.card.bg-warning .card-title,
+.card.bg-secondary .card-title {
+  color: white !important;
+}
+
+.card.bg-primary h3,
+.card.bg-success h3,
+.card.bg-info h3,
+.card.bg-warning h3,
+.card.bg-secondary h3 {
+  color: white !important;
+}
+
+.card.bg-primary .card-body,
+.card.bg-success .card-body,
+.card.bg-info .card-body,
+.card.bg-warning .card-body,
+.card.bg-secondary .card-body {
+  background: var(--bakery-brown) !important;
+}

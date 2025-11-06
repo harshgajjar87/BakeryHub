@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Premium Bakery Platform - Fresh Baked Goods, Professional Baking Courses, and Artisan Products. Order online for home delivery or pickup.">
+    <meta name="keywords" content="bakery, baking courses, fresh bread, cakes, pastries, artisan baking, online bakery">
+    <meta name="author" content="Bakery Platform">
+    <meta property="og:title" content="Bakery Platform - Fresh Baked Goods & Courses">
+    <meta property="og:description" content="Premium Bakery Platform - Fresh Baked Goods, Professional Baking Courses, and Artisan Products">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bakery Platform - Fresh Baked Goods & Courses">
+    <meta name="twitter:description" content="Premium Bakery Platform - Fresh Baked Goods, Professional Baking Courses, and Artisan Products">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+    <title>Bakery Platform - Fresh Baked Goods & Professional Baking Courses</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+      /* Preload critical resources */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #FFF8DC 0%, #F5F5DC 50%, #FFFACD 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+
+      .loading-content {
+        text-align: center;
+        color: #8B4513;
+      }
+
+      .loading-spinner-large {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(139, 69, 19, 0.3);
+        border-radius: 50%;
+        border-top-color: #8B4513;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      .loading-text {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .loading-subtext {
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      /* Hide loading screen when app loads */
+      .loading-screen.loaded {
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-content">
+        <div class="loading-spinner-large"></div>
+        <div class="loading-text">Welcome to Bakery Platform</div>
+        <div class="loading-subtext">Preparing fresh delights...</div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Remove loading screen when React app mounts
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const loadingScreen = document.getElementById('loading-screen');
+          if (loadingScreen) {
+            loadingScreen.classList.add('loaded');
+            setTimeout(() => loadingScreen.remove(), 500);
+          }
+        }, 1000);
+      });
+
+      // Performance monitoring
+      if ('performance' in window && 'PerformanceObserver' in window) {
+        try {
+          const observer = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+              if (entry.entryType === 'largest-contentful-paint') {
+                console.log('LCP:', entry.startTime);
+              }
+            }
+          });
+          observer.observe({ entryTypes: ['largest-contentful-paint'] });
+        } catch (e) {
+          console.log('Performance monitoring not supported');
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "bakeryhub",
+  "version": "1.0.0",
+  "description": "Bakery E-commerce + Course Platform",
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build:frontend": "cd frontend && npm run build",
+    "start:backend": "cd backend && npm start"
+  },
+  "dependencies": {
+    "emoji-picker-react": "^4.15.0",
+    "sonner": "^2.0.7"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "mern",
+    "bakery",
+    "ecommerce",
+    "courses"
+  ],
+  "author": "Harsh Gajjar",
+  "license": "ISC"
+}
