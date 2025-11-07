@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { toast } from 'sonner';
 
-// Use relative URLs to leverage Vite proxy
-axios.defaults.baseURL = '';
+// Use environment variable for API URL or default to empty string for development proxy
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || '';
 
 // Apply token from localStorage if exists
 const existingToken = localStorage.getItem('token');
